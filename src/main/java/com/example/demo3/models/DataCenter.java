@@ -45,6 +45,13 @@ public class DataCenter {
 	}
 	private String name;
       private int capacity;
-      @OneToMany(mappedBy = "DataCenter", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+      private String Location;
+      public String getLocation() {
+		return Location;
+	}
+	public void setLocation(String location) {
+		Location = location;
+	}
+	@OneToMany(mappedBy = "DataCenter", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
       private List<Server> servers = new ArrayList<>();
 }
