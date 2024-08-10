@@ -1,5 +1,10 @@
 package com.example.demo3.repositories;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +24,23 @@ public class DataCenterService {
 		 return false;	
 		}
 		
+	}
+	public List<Map<String,String>> GetDataCentersLocation()
+	{
+		return dcs.GetDatacentersLocations();
+		
+	}
+	public List<Map<String,Object>> GetnBServersPerDataCenter(){
+		
+		List<DataCenter>datacenters=dcs.findAll();
+		List<Map<String, Object>> l = new ArrayList<>();
+		for (DataCenter datacenter : datacenters) {
+			Map<String, Object> map = new HashMap<>();
+		    map.put("datacenter_name", datacenter.getName().toString()); 
+		    map.put("size_of_servers", datacenter.getServers().size());
+			l.add(map);
+			} 
+		return l;
 	}
 	
 
