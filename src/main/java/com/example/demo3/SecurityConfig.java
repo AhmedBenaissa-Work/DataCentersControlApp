@@ -23,6 +23,7 @@ public class SecurityConfig {
 			.authorizeHttpRequests((requests) -> requests
 				.requestMatchers("/**").permitAll()
 				.requestMatchers("/datacenters/**").authenticated()
+				.requestMatchers("/servers/**").authenticated()
 			)
 			.formLogin((form) -> form
 				.loginPage("/login")
