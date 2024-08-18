@@ -15,7 +15,7 @@ import com.example.demo3.models.DataCenter;
 import com.example.demo3.repositories.DataCenterService;
 
 @RestController
-@RequestMapping("/datacenters")
+@RequestMapping("/api/datacenters")
 public class DataCenterController {
 	@Autowired
     DataCenterService dcs;
