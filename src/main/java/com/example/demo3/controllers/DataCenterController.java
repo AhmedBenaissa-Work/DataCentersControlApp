@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,5 +51,25 @@ public class DataCenterController {
 	    }
 	    
 	  }
+	 @GetMapping("/")
+	 @PreAuthorize("hasRole('USER')")
+	 List<DataCenter> Get() {
+	    try {
+	    	return dcs.GetDataCenters();
+	    }catch(Exception e) {
+	    	return null;
+	    }
+	    
+	  }
+	 @GetMapping("/availability/{data_center_id}")
+	 @PreAuthorize("hasRole('USER')")
+	 Map<String, Float> Availability(@PathVariable("data_center_id") Long datacenterid){
+		 try {
+		return dcs.GetAvailability(datacenterid);
+		 }
+		 catch(Exception e) {
+		    	return null;
+		    }
+	 }
 	 
 }
