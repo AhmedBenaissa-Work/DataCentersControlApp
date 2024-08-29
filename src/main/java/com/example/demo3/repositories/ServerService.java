@@ -78,4 +78,9 @@ public class ServerService {
     		}
     	
     }
+    public List<Server> Servers(Long datacenterId){
+    	Optional<DataCenter> s = dcr.findById(datacenterId);
+    	DataCenter dc=s.get();
+    	return dc.getServers();
+    }
 }

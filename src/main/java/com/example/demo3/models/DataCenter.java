@@ -3,6 +3,9 @@ package com.example.demo3.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -52,6 +55,7 @@ public class DataCenter {
 	public void setLocation(String location) {
 		Location = location;
 	}
-	@OneToMany(mappedBy = "DataCenter", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	 @JsonIgnore
+	  @OneToMany(mappedBy = "DataCenter", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
       private List<Server> servers = new ArrayList<>();
 }

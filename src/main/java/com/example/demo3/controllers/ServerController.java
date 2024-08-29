@@ -1,7 +1,10 @@
 package com.example.demo3.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,4 +32,11 @@ public class ServerController {
 	    else {
 	    	return null;
 	    }
-}}
+}
+	 @GetMapping("/Get/{data_center_id}")
+	 @PreAuthorize("hasRole('USER')")
+	  List<Server> Servers(@PathVariable("data_center_id") Long datacenterid) {
+		 return ss.Servers(datacenterid);
+	    
+}
+	 }
