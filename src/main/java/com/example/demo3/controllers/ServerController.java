@@ -19,7 +19,7 @@ import com.example.demo3.repositories.ServerService;
 
 
 @RestController
-@RequestMapping("/servers")
+@RequestMapping("/api/servers")
 public class ServerController {
 	@Autowired
     ServerService ss;
