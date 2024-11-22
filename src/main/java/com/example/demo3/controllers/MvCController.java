@@ -12,13 +12,5 @@ public class MvCController {
 
     private static final Logger LOG = LoggerFactory.getLogger(MvCController.class);
 
-    @GetMapping(value = "/login")
-    public String login() {
-        LOG.info("/login");
-
-        LOG.info("Return login");
-
-        //return login.html located in /resources/templates
-        return "login2";
-    }
+    
 }

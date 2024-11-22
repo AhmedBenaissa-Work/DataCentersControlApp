@@ -12,6 +12,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -56,6 +58,18 @@ public class DataCenter {
 		Location = location;
 	}
 	 @JsonIgnore
-	  @OneToMany(mappedBy = "DataCenter", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-      private List<Server> servers = new ArrayList<>();
+	 @OneToMany(mappedBy = "DataCenter", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+     private List<Server> servers = new ArrayList<>();
+	 
+	 @JsonIgnore
+	 @ManyToOne()
+	 @JoinColumn(name = "UserID", referencedColumnName = "UserID")
+	 private User User;
+	 
+	public User getUser() {
+		return User;
+	}
+	public void setUser(User user) {
+		User = user;
+	}
 }
